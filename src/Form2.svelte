@@ -17,18 +17,18 @@
         },
         validate: values => {
             let errs = {};
-            // Validar todos los campos
+        
             for (const key in values) {
                 if (values[key] === "") {
-                    errs[key] = "Este campo es requerido"; // Mensaje de error para campos vacíos
+                    errs[key] = "Este campo es requerido"; 
                 }
             }
             return errs;
         },
         onSubmit: () => {
-            showMessage = true; // Muestra el mensaje de éxito
+            showMessage = true; 
             setTimeout(() => {
-                showMessage = false; // Oculta el mensaje después de 3 segundos
+                showMessage = false; 
             }, 3000);
         }
     });
@@ -204,45 +204,9 @@
         font-size: 12px;
     }
 
-    header {
-    background-color: #0049ff; 
-    color: white; 
-    padding: 15px; 
-   
-    
-}
 
-.header-container {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 0 20px; 
     
-}
 
-.header-logo img {
-    height: 40px; 
-   
-}
-
-.header-links {
-    display: flex; 
-    gap: 20px; 
-    
-}
-
-.header-link {
-    cursor: default; 
-    color: white; 
-    
-}
-
-.header-link:hover {
-    text-decoration: underline; 
-    
-}
 
     @media only screen and (max-width: 900px) {
         .right {
@@ -257,21 +221,6 @@
 </style>
 
 
-<header>
-    <div class="header-container">
-        <div class="header-logo">
-            <img src="https://linktic.com/media/2024/03/logo-footer.svg" alt="LINKTIC Logo" />
-        </div>
-        <div class="header-links">
-            <span class="header-link">Quiénes somos</span>
-            <span class="header-link">Servicios</span>
-            <span class="header-link">Portafolio</span>
-            <span class="header-link">Carrera</span>
-            <span class="header-link">Publicaciones</span>
-            <span class="header-link">Contáctenos</span>
-        </div>
-    </div>
-</header>
 
 <div class="main-container">
     <div class="right">

@@ -1,38 +1,5 @@
+
 <style>
-
-header {
-    background-color: #0049ff; 
-    color: white; 
-    padding: 15px 0; 
-}
-
-.header-container {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 0 20px; 
-}
-
-.header-logo img {
-    height: 40px; 
-}
-
-.header-links {
-    display: flex; 
-    gap: 20px; 
-}
-
-.header-link {
-    cursor: default; 
-    color: white; 
-}
-
-.header-link:hover {
-    text-decoration: underline; 
-}
-
 
 footer {
         background-color: black;
@@ -84,7 +51,7 @@ footer {
     padding: 40px;
     background-color: #f2f8ff;
     border-radius: 15px;
-    margin-top: 50px;
+ 
     
     }
 
@@ -128,7 +95,6 @@ footer {
     padding: 40px;
     background-color: #f2f8ff;
     border-radius: 15px;
-    margin-bottom: 50px;
     margin-top: 50px;
     
     }
@@ -146,27 +112,9 @@ footer {
 </style>
 
 
-
-
-
-<header>
-    <div class="header-container">
-        <div class="header-logo">
-            <img src="https://linktic.com/media/2024/03/logo-footer.svg" alt="LINKTIC Logo" />
-        </div>
-        <div class="header-links">
-            <span class="header-link">Quiénes somos</span>
-            <span class="header-link">Servicios</span>
-            <span class="header-link">Portafolio</span>
-            <span class="header-link">Carrera</span>
-            <span class="header-link">Publicaciones</span>
-            <span class="header-link">Contáctenos</span>
-        </div>
-    </div>
-</header>
-
-
 <main>
+    <br><br><br>
+    
     <section class="intro">
         <h1>Instructivo Plantilla EST Proyecto</h1>
         <p>Esta estimación se realiza para determinar en la etapa de preventa el tamaño general y aproximado del proyecto, con el fin de generar una guía para las siguientes líneas base del proyecto. Usando las tallas de camiseta para determinar el tamaño, donde la talla XS corresponde a una actividad pequeña y XL a las actividades más grandes del proyecto. Por medio de una referencia o Pivote se comparan los requerimientos para poder asignarles un tamaño. Esta estimación debe ser realizada con el apoyo de un profesional Senior con cargo de liderazgo de cada una de las áreas de la Fabric, o como mínimo el Simplificador, un analista de requerimientos, un líder técnico y un analista de calidad.</p>
@@ -197,6 +145,8 @@ footer {
         <p>Una vez realizada la estimación de cada uno de los requerimientos y/o tareas, se obtendrá el tamaño del proyecto y su esfuerzo en horas a un alto nivel.</p>
        
     </section>
+
+    <br><br><br>
 </main>
 
 
