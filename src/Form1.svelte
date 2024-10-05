@@ -1,9 +1,9 @@
 <script>
     import { createForm } from "svelte-forms-lib";
-    import { Footer } from 'flowbite-svelte';
-
+    export let goToPage;  
+  
     let showMessage = false;
-
+  
     const { form, errors, handleChange, handleSubmit } = createForm({
       initialValues: {
         ordenTrabajo: '',
@@ -19,47 +19,24 @@
       },
       validate: values => {
         let errs = {};
-        if (values.ordenTrabajo === "") {
-          errs["ordenTrabajo"] = "Este campo es requerido";
-        }
-        if (values.alcanceProyecto === "") {
-          errs["alcanceProyecto"] = "Este campo es requerido";
-        }
-        if (values.documentoRequisitos === "") {
-          errs["documentoRequisitos"] = "Este campo es requerido";
-        }
-        if (values.entregables === "") {
-          errs["entregables"] = "Este campo es requerido";
-        }
-        if (values.arquitecturaSolucion === "") {
-          errs["arquitecturaSolucion"] = "Este campo es requerido";
-        }
-        if (values.infraestructura === "") {
-          errs["infraestructura"] = "Este campo es requerido";
-        }
-        if (values.entregaSoporte === "") {
-          errs["entregaSoporte"] = "Este campo es requerido";
-        }
-        if (values.metodoMetodologia === "") {
-          errs["metodoMetodologia"] = "Este campo es requerido";
-        }
-        if (values.fechaSolicitud === "") {
-          errs["fechaSolicitud"] = "Este campo es requerido";
-        }
-        if (values.fechaEntrega === "") {
-          errs["fechaEntrega"] = "Este campo es requerido";
+  
+        for (const key in values) {
+          if (values[key] === "") {
+            errs[key] = "Este campo es requerido";
+          }
         }
         return errs;
       },
       onSubmit: () => {
         showMessage = true;
+        
         setTimeout(() => {
           showMessage = false;
+          goToPage('form2');  
         }, 3000);
       }
     });
-
-</script>
+  </script>
 
 <style>
 
@@ -165,7 +142,7 @@
     button:hover {
         box-shadow: 0px 0px 5px #5C8BFF,
                     0px 0px 30px #5C8BFF,
-                    0px 0px 90px #5C8BFF;
+                    0px 0px 50px #5C8BFF;
         background: #5C8BFF;
         transition: all .3s;
     }
@@ -334,6 +311,7 @@
                 </div>
 
                 <button type="submit">Enviar</button>
+                
             </form>
       
     </div>

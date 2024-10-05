@@ -12,25 +12,28 @@
 
 <header>
   <div class="header-container">
+    
     <div class="header-logo">
-      <img src="https://linktic.com/media/2024/03/logo-footer.svg" alt="LINKTIC Logo" />
+      <img src="https://linktic.com/media/2024/03/logo-footer.svg" alt="LINKTIC Logo" on:click={() => goToPage('home')} style="cursor: pointer;"           
+      />
     </div>
     <div class="header-links">
       <button on:click={() => goToPage('home')} class="header-link">Quiénes somos</button>
       <button on:click={() => goToPage('form1')} class="header-link">Formulario de Solicitud</button>
       <button on:click={() => goToPage('form2')} class="header-link">Generalidades del proyecto</button>
-    
     </div>
   </div>
 </header>
 
+<!-- Muestra los componentes según la página actual -->
 {#if currentPage === 'home'}
   <Home />
 {:else if currentPage === 'form1'}
-  <Form1 />
+  <Form1 {goToPage} />
 {:else if currentPage === 'form2'}
   <Form2 />
 {/if}
+
 
 <style>
 header {

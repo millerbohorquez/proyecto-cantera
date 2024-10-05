@@ -4,9 +4,9 @@
 footer {
         background-color: black;
         color: rgb(240, 239, 239);
-        width: 100%;
         padding: 20px;
         text-align: center;
+      
     }
 
     .footer-logo {
@@ -101,13 +101,18 @@ footer {
 
     main{
         
-        background-image: url('https://www.kienyke.com/sites/default/files/styles/amp_1200x675_16_9/public/2022-12/1_0030_IMG_4814.jpg?itok=WVRQV9oK');
+        background-color: #E0E0E0;
         background-size: cover;
         width: 100%;
-        
+        font-family: 'Arial', sans-serif; 
+        line-height: 1.6; 
+        font-size: 16px;
+        text-align: center;
         
         
     }
+
+
 
 </style>
 
