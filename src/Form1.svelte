@@ -20,11 +20,43 @@
       validate: values => {
         let errs = {};
   
+       
         for (const key in values) {
           if (values[key] === "") {
             errs[key] = "Este campo es requerido";
           }
         }
+
+         
+      const alphanumericRegex = /^[a-zA-Z0-9]+$/;
+      if (!alphanumericRegex.test(values.ordenTrabajo)) {
+        errs.ordenTrabajo = "El campo debe ser alfanumérico (solo letras y números)";
+      }
+  
+        const textOnlyRegex = /^[a-zA-Z0-9\sáéíóúÁÉÍÓÚ.,;:()]+$/;
+  
+      
+        const textFields = [
+          'alcanceProyecto', 'documentoRequisitos', 'entregables',
+          'arquitecturaSolucion', 'infraestructura', 'entregaSoporte', 'metodoMetodologia'
+        ];
+  
+        textFields.forEach(field => {
+          if (!textOnlyRegex.test(values[field])) {
+            errs[field] = "Este campo solo debe contener letras caracteres de texto y numeros ";
+          }
+        });
+
+           
+      if (values.fechaSolicitud && values.fechaEntrega) {
+        const fechaSolicitud = new Date(values.fechaSolicitud);
+        const fechaEntrega = new Date(values.fechaEntrega);
+
+        if (fechaEntrega <= fechaSolicitud) {
+          errs.fechaEntrega = "La fecha de entrega debe ser posterior a la fecha de solicitud";
+        }
+      }
+  
         return errs;
       },
       onSubmit: () => {
@@ -41,11 +73,16 @@
 <style>
 
     
-    .main-container {
-        background-image: url('https://pbs.twimg.com/media/DDfzVLvXoAQxO61.jpg');
+.main-container {
+        background-color: #E0E0E0;
         background-size: cover;
         width: 100%;
-        height: 100vh;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 55px; 
+        box-sizing: border-box; 
     }
   
     textarea {
@@ -68,18 +105,19 @@
     border: 2px solid #5C8BFF;
     cursor: pointer;
 }
-    .right {
-        position: absolute;
-        width: 600px;
-        left: 50%;
-        transform: translateX(-50%);
-        height: auto;
-        top: 150px;
-        background: #f2f8ff;
-        border-radius: 25px;
-        text-align: center;
-        padding: 30px;
-    }
+.right {
+    width: 40%;
+    height: 90%;
+    max-width: 1000px;
+    background: #f2f8ff;
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  
+    
+}
+    
   
     .title-section {
         margin-bottom: 30px;
@@ -151,7 +189,7 @@
         color: rgb(255, 47, 47);
         font-size: smaller;
         font-weight: bold;
-        font-family: 'Times New Roman', Times, serif;
+        font-family: 'Arial', sans-serif;
         text-align: left;
         margin-top: 5px;
     }
@@ -161,6 +199,9 @@
         color: rgb(240, 239, 239);
         padding: 20px;
         text-align: center;
+        
+         
+        
     }
 
     .footer-logo {
@@ -168,6 +209,7 @@
         justify-content: center;
         align-items: center;
         margin-bottom: 15px;
+        cursor: pointer; 
     }
 
     .footer-logo img {
@@ -181,16 +223,19 @@
         flex-wrap: wrap;
         margin-bottom: 10px;
         font-size: 14px;
+        
     }
 
     .footer-link {
         margin: 0 15px;
         cursor: default; 
         color: rgb(240, 239, 239);
+        cursor: pointer; 
     }
 
     .footer-link:hover {
         text-decoration: underline;
+        cursor: pointer; 
     }
 
     .footer-copyright {
@@ -215,7 +260,10 @@
             flex: 0 0 100%;
         }
     }
-
+     h5{
+     margin: 0;
+     
+    }
    
 
 </style>
@@ -226,7 +274,7 @@
     <div class="right">
         <section>
             <div id="confirmationMessage" style="{showMessage ? 'display: block;' : 'display: none;'}">
-                <p>Formulario enviado correctamente. ¡Gracias!</p>
+                <strong>Formulario enviado correctamente.</strong>
             </div>
         </section>
 
@@ -240,14 +288,16 @@
 
 
                 <div class="form-group">
-                    <input type="number" id="ordenTrabajo" placeholder="Orden de Trabajo/Servicio" bind:value={$form.ordenTrabajo} on:change={handleChange} />
+                    <h5>ORDEN DE TRABAJO/SERVICIO</h5>
+                    <input type="text" id="ordenTrabajo" placeholder="Orden de Trabajo/Servicio" bind:value={$form.ordenTrabajo} on:change={handleChange} />
                     {#if $errors.ordenTrabajo}
-                        <small class="mensajeError">{$errors.ordenTrabajo}</small>
+                      <small class="mensajeError">{$errors.ordenTrabajo}</small>
                     {/if}
-                </div>
+                  </div>
 
 
                 <div class="form-group">
+                    <h5>ALCANCE DEL PROYECTO</h5>
                     <textarea id="alcanceProyecto" placeholder="Alcance del Proyecto" bind:value={$form.alcanceProyecto} on:change={handleChange}></textarea>
                     {#if $errors.alcanceProyecto}
                         <small class="mensajeError">{$errors.alcanceProyecto}</small>
@@ -255,6 +305,7 @@
                 </div>
 
                 <div class="form-group">
+                    <h5>DOCUMENTO DE REQUISITOS</h5>
                     <input type="text" id="documentoRequisitos" placeholder="Documento de Requisitos" bind:value={$form.documentoRequisitos} on:change={handleChange} />
                     {#if $errors.documentoRequisitos}
                         <small class="mensajeError">{$errors.documentoRequisitos}</small>
@@ -262,6 +313,7 @@
                 </div>
 
                 <div class="form-group">
+                    <h5>ENTREGABLES</h5>
                     <input type="text" id="entregables" placeholder="Entregables" bind:value={$form.entregables} on:change={handleChange} />
                     {#if $errors.entregables}
                         <small class="mensajeError">{$errors.entregables}</small>
@@ -269,6 +321,7 @@
                 </div>
 
                 <div class="form-group">
+                    <h5>ARQUITECTURA DE SOLUCION</h5>
                     <input type="text" id="arquitecturaSolucion" placeholder="Arquitectura de Solución" bind:value={$form.arquitecturaSolucion} on:change={handleChange} />
                     {#if $errors.arquitecturaSolucion}
                         <small class="mensajeError">{$errors.arquitecturaSolucion}</small>
@@ -276,6 +329,7 @@
                 </div>
 
                 <div class="form-group">
+                    <h5>INFRAESTRUCTURA</h5>
                     <input type="text" id="infraestructura" placeholder="Infraestructura" bind:value={$form.infraestructura} on:change={handleChange} />
                     {#if $errors.infraestructura}
                         <small class="mensajeError">{$errors.infraestructura}</small>
@@ -283,6 +337,7 @@
                 </div>
 
                 <div class="form-group">
+                    <h5>ENTREGA DE SOPORTE</h5>
                     <input type="text" id="entregaSoporte" placeholder="Entrega de Soporte" bind:value={$form.entregaSoporte} on:change={handleChange} />
                     {#if $errors.entregaSoporte}
                         <small class="mensajeError">{$errors.entregaSoporte}</small>
@@ -290,6 +345,7 @@
                 </div>
 
                 <div class="form-group">
+                    <h5>METODO/METODOLOGIA</h5>
                     <input type="text" id="metodoMetodologia" placeholder="Método/Metodología" bind:value={$form.metodoMetodologia} on:change={handleChange} />
                     {#if $errors.metodoMetodologia}
                         <small class="mensajeError">{$errors.metodoMetodologia}</small>
@@ -297,6 +353,7 @@
                 </div>
 
                 <div class="form-group">
+                    <h5>FECHA DE SOLICITUD</h5>
                     <input type="date" id="fechaSolicitud" placeholder="Fecha de Solicitud" bind:value={$form.fechaSolicitud} on:change={handleChange} />
                     {#if $errors.fechaSolicitud}
                         <small class="mensajeError">{$errors.fechaSolicitud}</small>
@@ -304,6 +361,7 @@
                 </div>
 
                 <div class="form-group">
+                    <h5>FECHA DE ENTREGA</h5>
                     <input type="date" id="fechaEntrega" placeholder="Fecha de Entrega" bind:value={$form.fechaEntrega} on:change={handleChange} />
                     {#if $errors.fechaEntrega}
                         <small class="mensajeError">{$errors.fechaEntrega}</small>

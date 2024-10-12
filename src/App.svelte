@@ -25,14 +25,14 @@
   </div>
 </header>
 
-<!-- Muestra los componentes según la página actual -->
+
 {#if currentPage === 'home'}
   <Home />
 {:else if currentPage === 'form1'}
   <Form1 {goToPage} />
 {:else if currentPage === 'form2'}
   <Form2 />
-{/if}
+{/if} 
 
 
 <style>

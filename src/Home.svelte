@@ -14,11 +14,13 @@ footer {
         justify-content: center;
         align-items: center;
         margin-bottom: 15px;
+         
     }
 
     .footer-logo img {
         height: 40px; 
         margin-right: 10px;
+        cursor: pointer; 
     }
 
     .footer-links {
@@ -27,16 +29,19 @@ footer {
         flex-wrap: wrap;
         margin-bottom: 10px;
         font-size: 14px;
+        cursor: pointer; 
     }
 
     .footer-link {
         margin: 0 15px;
         cursor: default; 
         color: rgb(240, 239, 239);
+        cursor: pointer; 
     }
 
     .footer-link:hover {
         text-decoration: underline;
+        cursor: pointer; 
     }
 
     .footer-copyright {
