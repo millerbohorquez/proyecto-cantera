@@ -1,6 +1,7 @@
 <script>
   import Form1 from './Form1.svelte';
   import Form2 from './Form2.svelte';
+  import Form3 from './Form3.svelte';
   import Home from './Home.svelte';
 
   let currentPage = 'home';
@@ -12,19 +13,18 @@
 
 <header>
   <div class="header-container">
-    
     <div class="header-logo">
-      <img src="https://linktic.com/media/2024/03/logo-footer.svg" alt="LINKTIC Logo" on:click={() => goToPage('home')} style="cursor: pointer;"           
-      />
+      <img src="https://linktic.com/media/2024/03/logo-footer.svg" alt="LINKTIC Logo" 
+      on:click={() => goToPage('home')} style="cursor: pointer;" />
     </div>
     <div class="header-links">
       <button on:click={() => goToPage('home')} class="header-link">Quiénes somos</button>
       <button on:click={() => goToPage('form1')} class="header-link">Formulario de Solicitud</button>
-      <button on:click={() => goToPage('form2')} class="header-link">Generalidades del proyecto</button>
+      <button on:click={() => goToPage('form2')} class="header-link">Stakeholders</button>
+      <button on:click={() => goToPage('form3')} class="header-link">BackLog de Alto Nivel</button>
     </div>
   </div>
 </header>
-
 
 {#if currentPage === 'home'}
   <Home />
@@ -32,7 +32,10 @@
   <Form1 {goToPage} />
 {:else if currentPage === 'form2'}
   <Form2 />
-{/if} 
+{:else if currentPage === 'form3'}
+  <Form3 {goToPage} />
+{/if}
+
 
 
 <style>

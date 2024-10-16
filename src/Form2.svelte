@@ -60,11 +60,20 @@
         validate: values => {
             let errs = {};
 
-            for (const key in values) {
-                if (values[key] === "") {
-                    errs[key] = "Este campo es requerido";
+            const requiredFields = [
+                'nombreRQ', 'cargoRQ', 
+                'nombreDiseno', 'cargoDiseno', 
+                'nombreArquitectura', 'cargoArquitectura', 
+                'nombreDesarrollo', 'cargoDesarrollo', 
+                'nombreMetodologias', 'cargoMetodologias'
+            ];
+
+            requiredFields.forEach(field => {
+                if (values[field] === "") {
+                    errs[field] = "Este campo es requerido";
                 }
-            }
+            });
+
             return errs;
         },
         onSubmit: () => {
@@ -356,7 +365,7 @@
             
                 <div class="container">
                 <div class="header">
-                    <h3>Requerimientos</h3>
+                    <h3><em>*</em> Requerimentos (RQ)</h3>
                     <button class="accordion-button" type="button" on:click={() => toggleAccordion('rq')}>
                         <svg class={`arrow ${accordions.rq ? 'rotate' : ''}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -440,7 +449,7 @@
                 
                 <div class="container">
                     <div class="header">
-                        <h3><em>*</em> Arquitectura</h3>
+                        <h3><em>*</em> Arquitectura (ARQ)</h3>
                         <button class="accordion-button" type="button" on:click={() => toggleAccordion('Arqui')}>
                             <svg class={`arrow ${accordions.Arqui ? 'rotate' : ''}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -481,7 +490,7 @@
 
                 <div class="container">
                     <div class="header">
-                        <h3>Infraestructura</h3>
+                        <h3>Infraestrutura (INF)</h3>
                         <button class="accordion-button" type="button" on:click={() => toggleAccordion('Infra')}>
                             <svg class={`arrow ${accordions.Infra ? 'rotate' : ''}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -565,7 +574,7 @@
             
                 <div class="container">
                     <div class="header">
-                        <h3><em>*</em> Desarrollo (NC/LC)</h3>
+                        <h3>Desarrollo (DEV-NC/LC)</h3>
                         <button class="accordion-button" type="button" on:click={() => toggleAccordion('DesarrolloNC')}>
                             <svg class={`arrow ${accordions.DesarrolloNC ? 'rotate' : ''}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -648,7 +657,7 @@
             
                 <div class="container">
                     <div class="header">
-                        <h3><em>*</em> Datos (DBA)</h3>
+                        <h3>Datos (DBA)</h3>
                         <button class="accordion-button" type="button" on:click={() => toggleAccordion('Datos')}>
                             <svg class={`arrow ${accordions.Datos ? 'rotate' : ''}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -696,7 +705,7 @@
             
             <div class="container">
                 <div class="header">
-                    <h3>Automatizacion</h3>
+                    <h3>Automatizaciones (AUT) </h3>
                     <button class="accordion-button" type="button" on:click={() => toggleAccordion('Automa')}>
                         <svg class={`arrow ${accordions.Automa ? 'rotate' : ''}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -737,7 +746,7 @@
 
             <div class="container">
                 <div class="header">
-                    <h3><em>*</em> Calidad (QA)</h3>
+                    <h3>Aseguramiento de caldiad (QA)</h3>
                     <button class="accordion-button" type="button" on:click={() => toggleAccordion('Calidad')}>
                         <svg class={`arrow ${accordions.Calidad ? 'rotate' : ''}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -781,7 +790,7 @@
 
             <div class="container">
                 <div class="header">
-                    <h3><em>*</em> Metodologias</h3>
+                    <h3><em>*</em> Metodologias Agiles/CMMI (M.A/C)</h3>
                     <button class="accordion-button" type="button" on:click={() => toggleAccordion('Metodologias')}>
                         <svg class={`arrow ${accordions.Metodologias ? 'rotate' : ''}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -822,7 +831,7 @@
 
             <div class="container">
                 <div class="header">
-                    <h3><em>*</em> Copy</h3>
+                    <h3>Copy</h3>
                     <button class="accordion-button" type="button" on:click={() => toggleAccordion('Copy')}>
                         <svg class={`arrow ${accordions.Copy ? 'rotate' : ''}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -867,7 +876,7 @@
 
             <div class="container">
                 <div class="header">
-                    <h3><em>*</em> Diseño Grafico</h3>
+                    <h3>Diseño Grafico</h3>
                     <button class="accordion-button" type="button" on:click={() => toggleAccordion('Diseno')}>
                         <svg class={`arrow ${accordions.Diseno ? 'rotate' : ''}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -908,7 +917,7 @@
 
             <div class="container">
                 <div class="header">
-                    <h3><em>*</em> Estrategia</h3>
+                    <h3>Estrategia</h3>
                     <button class="accordion-button" type="button" on:click={() => toggleAccordion('Estra')}>
                         <svg class={`arrow ${accordions.Estra ? 'rotate' : ''}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -953,7 +962,7 @@
 
             <div class="container">
                 <div class="header">
-                    <h3><em>*</em> Formación</h3>
+                    <h3>Formación</h3>
                     <button class="accordion-button" type="button" on:click={() => toggleAccordion('Forma')}>
                         <svg class={`arrow ${accordions.Forma ? 'rotate' : ''}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -995,7 +1004,7 @@
            
             <div class="container">
                 <div class="header">
-                    <h3><em>*</em> Audiovisual</h3>
+                    <h3>Audiovisual</h3>
                     <button class="accordion-button" type="button" on:click={() => toggleAccordion('Audio')}>
                         <svg class={`arrow ${accordions.Audio ? 'rotate' : ''}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
