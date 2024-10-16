@@ -377,24 +377,26 @@
                     <div class="content">
                         <div>
                             <label class="form-label" for="nombreRQ">Nombre</label>
-                            <select class="input-field" id="nombreRQ" bind:value={$form.nombreRQ} on:change={handleChange}>
+                            <input list="nombreRQOptions" id="nombreRQ" bind:value={$form.nombreRQ} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un nombre" required />
+                            <datalist id="nombreRQOptions">
                                 <option value="">Seleccione un nombre</option>
                                 <option value="Miller">Miller</option>
                                 <option value="Jorge">Jorge</option>
                                 <option value="Chrystian">Chrystian</option>
-                            </select>
+                            </datalist>
                             {#if $errors.nombreRQ}
                                 <small class="mensajeError">{$errors.nombreRQ}</small>
                             {/if}
                         </div>
                         <div>
                             <label class="form-label" for="cargoRQ">Cargo</label>
-                            <select class="input-field" id="cargoRQ" bind:value={$form.cargoRQ} on:change={handleChange}>
+                            <input list="responsableOptions" id="nombreResponsable" bind:value={$form.nombreResponsable} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un responsable" required />
+                            <datalist id="responsableOptions">
                                 <option value="">Seleccione un cargo</option>
                                 <option value="Junior">Junior</option>
                                 <option value="Semi senior">Semi senior</option>
                                 <option value="Senior">Senior</option>
-                            </select>
+                            </datalist>
                             {#if $errors.cargoRQ}
                                 <small class="mensajeError">{$errors.cargoRQ}</small>
                             {/if}
@@ -418,24 +420,26 @@
                     <div class="content">
                         <div>
                             <label class="form-label" for="nombreDiseno">Nombre</label>
-                            <select class="input-field" id="nombreDiseno" bind:value={$form.nombreDiseno} on:change={handleChange}>
+                            <input list="nombreDisenoOptions" id="nombreDiseno" bind:value={$form.nombreDiseno} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un nombre" required />
+                            <datalist id="nombreDisenoOptions">
                                 <option value="">Seleccione un nombre</option>
                                 <option value="Miller">Miller</option>
                                 <option value="Jorge">Jorge</option>
                                 <option value="Chrystian">Chrystian</option>
-                            </select>
+                            </datalist>
                             {#if $errors.nombreDiseno}
                                 <small class="mensajeError">{$errors.nombreDiseno}</small>
                             {/if}
                         </div>
                         <div>
                             <label class="form-label" for="cargoDiseno">Cargo</label>
-                            <select class="input-field" id="cargoDiseno" bind:value={$form.cargoDiseno} on:change={handleChange}>
+                            <input list="cargoDisenoOptions" id="cargoDiseno" bind:value={$form.cargoDiseno} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un cargo" required />
+                            <datalist id="cargoDisenoOptions">
                                 <option value="">Seleccione un cargo</option>
                                 <option value="Diseñador UX ">Diseñador UX </option>
                                 <option value="Diseñador UI">Diseñador UI</option>
                                 <option value="Diseñador">Diseñador</option>
-                            </select>
+                            </datalist>
                             {#if $errors.cargoDiseno}
                                 <small class="mensajeError">{$errors.cargoDiseno}</small>
                             {/if}
@@ -461,24 +465,26 @@
                         <div class="content">
                         <div>
                             <label class="form-label" for="nombreArquitectura">Nombre</label>
-                            <select class="input-field" id="nombreArquitectura" bind:value={$form.nombreArquitectura} on:change={handleChange}>
+                            <input list="nombreArquitecturaOptions" id="nombreArquitectura" bind:value={$form.nombreArquitectura} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un nombre" required/>
+                            <datalist id="nombreArquitecturaOptions">
                                 <option value="">Seleccione un nombre</option>
                                 <option value="Miller">Miller</option>
                                 <option value="Jorge">Jorge</option>
                                 <option value="Chrystian">Chrystian</option>
-                            </select>
+                            </datalist>
                             {#if $errors.nombreArquitectura}
                                 <small class="mensajeError">{$errors.nombreArquitectura}</small>
                             {/if}
                         </div>
                         <div>
                             <label class="form-label" for="cargoArquitectura">Cargo</label>
-                            <select class="input-field" id="cargoArquitectura" bind:value={$form.cargoArquitectura} on:change={handleChange}>
+                            <input list="cargoArquitecturaOptions" id="cargoArquitectura" bind:value={$form.cargoArquitectura} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un cargo" required/>
+                            <datalist id="cargoArquitecturaOptions">
                                 <option value="">Seleccione un cargo</option>
                                 <option value="Arquitecto de software">Arquitecto de software</option>
                                 <option value="Arquitecto de soluciones">Arquitecto de soluciones</option>
                                 <option value="Líder de proyecto">Líder de proyecto</option>
-                            </select>
+                            </datalist>
                             {#if $errors.cargoArquitectura}
                                 <small class="mensajeError">{$errors.cargoArquitectura}</small>
                             {/if}
@@ -502,24 +508,26 @@
                         <div class="content">
                         <div>
                             <label class="form-label" for="nombreInfraestructura">Nombre</label>
-                            <select class="input-field" id="nombreInfraestructura" bind:value={$form.nombreInfraestructura} on:change={handleChange}>
+                            <input list="nombreInfraestructuraOptions" id="nombreInfraestructura" bind:value={$form.nombreInfraestructura} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un nombre" />
+                            <datalist id="nombreInfraestructuraOptions">
                                 <option value="">Seleccione un nombre</option>
                                 <option value="Miller">Miller</option>
                                 <option value="Jorge">Jorge</option>
                                 <option value="Chrystian">Chrystian</option>
-                            </select>
+                            </datalist>
                             {#if $errors.nombreInfraestructura}
                                 <small class="mensajeError">{$errors.nombreInfraestructura}</small>
                             {/if}
                         </div>
                         <div>
                             <label class="form-label" for="cargoInfraestructura">Cargo</label>
-                            <select class="input-field" id="cargoInfraestructura" bind:value={$form.cargoInfraestructura} on:change={handleChange}>
+                            <input list="cargoInfraestructuraOptions" id="cargoInfraestructura" bind:value={$form.cargoInfraestructura} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un cargo"/>
+                            <datalist id="cargoInfraestructuraOptions">
                                 <option value="">Seleccione un cargo</option>
                                 <option value="Ingeniero de infraestructura">Ingeniero de infraestructura </option>
                                 <option value="Desarrollador">Desarrollador</option>
                                 <option value="Administrador de sistemas">Administrador de sistemas </option>
-                            </select>
+                            </datalist>
                             {#if $errors.cargoInfraestructura}
                                 <small class="mensajeError">{$errors.cargoInfraestructura}</small>
                             {/if}
@@ -546,24 +554,26 @@
                         <div class="content">
                             <div>
                                 <label class="form-label" for="nombreCiberseguridad">Nombre</label>
-                                <select class="input-field" id="nombreCiberseguridad" bind:value={$form.nombreCiberseguridad} on:change={handleChange}>
+                                <input list="nombreCiberseguridadOptions" id="nombreCiberseguridad" bind:value={$form.nombreCiberseguridad} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un nombre"/>
+                                <datalist id="nombreCiberseguridadOptions">
                                     <option value="">Seleccione un nombre</option>
                                     <option value="Miller">Miller</option>
                                     <option value="Jorge">Jorge</option>
                                     <option value="Chrystian">Chrystian</option>
-                                </select>
+                                </datalist>
                                 {#if $errors.nombreCiberseguridad}
                                     <small class="mensajeError">{$errors.nombreCiberseguridad}</small>
                                 {/if}
                             </div>
                             <div>
                                 <label class="form-label" for="cargoCiberseguridad">Cargo</label>
-                                <select class="input-field" id="cargoCiberseguridad" bind:value={$form.cargoCiberseguridad} on:change={handleChange}>
+                                <input list="cargoCiberseguridadOptions" id="cargoCiberseguridad" bind:value={$form.cargoCiberseguridad} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un cargo"/>
+                                <datalist id="cargoCiberseguridadOptions">
                                     <option value="">Seleccione un cargo</option>
                                     <option value="Especialista en seguridad">Especialista en seguridad</option>
                                     <option value="Analista de ciberseguridad">Analista de ciberseguridad</option>
                                     <option value="Analista de seguridad">Analista de seguridad</option>
-                                </select>
+                                </datalist>
                                 {#if $errors.cargoCiberseguridad}
                                     <small class="mensajeError">{$errors.cargoCiberseguridad}</small>
                                 {/if}
@@ -586,23 +596,25 @@
                         <div class="fields-container">
                             <div>
                                 <label class="form-label" for="nombreDesarrolloNC">Nombre</label>
-                                <select class="input-field" id="nombreDesarrolloNC" bind:value={$form.nombreDesarrolloNC} on:change={handleChange}>
+                                <input list="nombreDesarrolloNCOptions" id="nombreDesarrolloNC" bind:value={$form.nombreDesarrolloNC} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un nombre" />
+                                <datalist id="nombreDesarrolloNCOptions">
                                     <option value="">Seleccione un nombre</option>
                                     <option value="Miller">Miller</option>
                                     <option value="Jorge">Jorge</option>
                                     <option value="Chrystian">Chrystian</option>
-                                </select>
+                                </datalist>
                                 {#if $errors.nombreDesarrolloNC}
                                     <small class="mensajeError">{$errors.nombreDesarrolloNC}</small>
                                 {/if}
                             </div>
                             <div>
                                 <label class="form-label" for="cargoDesarrolloNC">Cargo</label>
-                                <select class="input-field" id="cargoDesarrolloNC" bind:value={$form.cargoDesarrolloNC} on:change={handleChange}>
+                                <input list="cargoDesarrolloNCOptions" id="cargoDesarrolloNC" bind:value={$form.cargoDesarrolloNC} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un cargo" />
+                                <datalist id="cargoDesarrolloNCOptions">
                                     <option value="">Seleccione un cargo</option>
                                     <option value="Desarrollador Low code">Desarrollador Low code</option>
                                     <option value="Especialista en No code">Especialista en No code</option>
-                                </select>
+                                </datalist>
                                 {#if $errors.cargoDesarrolloNC}
                                     <small class="mensajeError">{$errors.cargoDesarrolloNC}</small>
                                 {/if}
@@ -629,24 +641,26 @@
                         <div class="fields-container">
                             <div>
                                 <label class="form-label" for="nombreDesarrollo">Nombre</label>
-                                <select class="input-field" id="nombreDesarrollo" bind:value={$form.nombreDesarrollo} on:change={handleChange}>
+                                <input list="nombreDesarrolloOptions" id="nombreDesarrollo" bind:value={$form.nombreDesarrollo} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un nombre" required />
+                                <datalist id="nombreDesarrolloOptions">
                                     <option value="">Seleccione un nombre</option>
                                     <option value="Ingeniero de software">Ingeniero de software</option>
                                     <option value="Ingeniero front">Ingeniero front</option>
                                     <option value="Líder de proyecto">Líder de proyecto</option>
-                                </select>
+                                </datalist>
                                 {#if $errors.nombreDesarrollo}
                                     <small class="mensajeError">{$errors.nombreDesarrollo}</small>
                                 {/if}
                             </div>
                             <div>
                                 <label class="form-label" for="cargoDesarrollo">Cargo</label>
-                                <select class="input-field" id="cargoDesarrollo" bind:value={$form.cargoDesarrollo} on:change={handleChange}>
+                                <input list="cargoDesarrolloOptions" id="cargoDesarrollo" bind:value={$form.cargoDesarrollo} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un cargo" required />
+                                <datalist id="cargoDesarrolloOptions">
                                     <option value="">Seleccione un cargo</option>
                                     <option value="Ingeniero de software">Ingeniero de software</option>
                                     <option value="Ingeniero front">Ingeniero front</option>
                                     <option value="Líder de proyecto">Líder de proyecto</option>
-                                </select>
+                                </datalist>
                                 {#if $errors.cargoDesarrollo}
                                     <small class="mensajeError">{$errors.cargoDesarrollo}</small>
                                 {/if}
@@ -669,24 +683,26 @@
                         <div class="fields-container">
                             <div>
                                 <label class="form-label" for="nombreDatos">Nombre</label>
-                                <select class="input-field" id="nombreDatos" bind:value={$form.nombreDatos} on:change={handleChange}>
+                                <input list="nombreDatosOptions" id="nombreDatos" bind:value={$form.nombreDatos} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un nombre"/>
+                                <datalist id="nombreDatosOptions">
                                     <option value="">Seleccione un nombre</option>
                                     <option value="Formación 1">Formación 1</option>
                                     <option value="Formación 2">Formación 2</option>
                                     <option value="Formación 3">Formación 3</option>
-                                </select>
+                                </datalist>
                                 {#if $errors.nombreDatos}
                                     <small class="mensajeError">{$errors.nombreDatos}</small>
                                 {/if}
                             </div>
                             <div>
                                 <label class="form-label" for="cargoDatos">Cargo</label>
-                                <select class="input-field" id="cargoDatos" bind:value={$form.cargoDatos} on:change={handleChange}>
+                                <input list="cargoDatosOptions" id="cargoDatos" bind:value={$form.cargoDatos} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un cargo"/>
+                                <datalist id="cargoDatosOptions">
                                     <option value="">Seleccione un cargo</option>
                                     <option value="DBA">DBA</option>
                                     <option value="Admin bases de datos">Admin bases de datos</option>
                                     <option value="Coordinador">Coordinador</option>
-                                </select>
+                                </datalist>
                                 {#if $errors.cargoDatos}
                                     <small class="mensajeError">{$errors.cargoDatos}</small>
                                 {/if}
@@ -718,24 +734,26 @@
                 <div class="fields-container">
                     <div>
                         <label class="form-label" for="nombreAUT">Nombre</label>
-                        <select class="input-field" id="nombreAUT" bind:value={$form.nombreAUT} on:change={handleChange}>
+                        <input list="nombreAUTOptions" id="nombreAUT" bind:value={$form.nombreAUT} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un nombre"/>
+                        <datalist id="nombreAUTOptions">
                             <option value="">Seleccione un nombre</option>
                             <option value="Miller">Miller</option>
                             <option value="Jorge">Jorge</option>
                             <option value="Chrystian">Chrystian</option>
-                        </select>
+                        </datalist>
                         {#if $errors.nombreAUT}
                             <small class="mensajeError">{$errors.nombreAUT}</small>
                         {/if}
                     </div>
                     <div>
                         <label class="form-label" for="cargoAUT">Cargo</label>
-                        <select class="input-field" id="cargoAUT" bind:value={$form.cargoAUT} on:change={handleChange}>
+                        <input list="cargoAUTOptions" id="cargoAUT" bind:value={$form.cargoAUT} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un cargo" />
+                        <datalist id="cargoAUTOptions">
                             <option value="">Seleccione un cargo</option>
                             <option value="Analista">Analista</option>
                             <option value="Desarrollador">Desarrollador</option>
                             <option value="Especialista en automatizacion">Especialista en automatizacion </option>
-                        </select>
+                        </datalist>
                         {#if $errors.cargoAUT}
                             <small class="mensajeError">{$errors.cargoAUT}</small>
                         {/if}
@@ -759,23 +777,25 @@
                 <div class="fields-container">
                     <div>
                         <label class="form-label" for="nombreQA">Nombre</label>
-                        <select class="input-field" id="nombreQA" bind:value={$form.nombreQA} on:change={handleChange}>
+                        <input list="nombreQAOptions" id="nombreQA" bind:value={$form.nombreQA} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un nombre"/>
+                        <datalist id="nombreQAOptions">
                             <option value="">Seleccione un nombre</option>
                             <option value="Miller">Miller</option>
                             <option value="Jorge">Jorge</option>
                             <option value="Chrystian">Chrystian</option>
-                        </select>
+                        </datalist>
                         {#if $errors.nombreQA}
                             <small class="mensajeError">{$errors.nombreQA}</small>
                         {/if}
                     </div>
                     <div>
                         <label class="form-label" for="cargoQA">Cargo</label>
-                        <select class="input-field" id="cargoQA" bind:value={$form.cargoQA} on:change={handleChange}>
+                        <input list="cargoQAOptions" id="cargoQA" bind:value={$form.cargoQA} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un cargo"/>
+                        <datalist id="cargoQAOptions">
                             <option value="">Seleccione un cargo</option>
                             <option value="Ingeniero de QA">Ingeniero de QA</option>
                             <option value="Especialista en calidad">Especialista en calidad</option>
-                        </select>
+                        </datalist>
                         {#if $errors.cargoQA}
                             <small class="mensajeError">{$errors.cargoQA}</small>
                         {/if}
@@ -803,24 +823,26 @@
                 <div class="fields-container">
                     <div>
                         <label class="form-label" for="nombreMetodologias">Nombre</label>
-                        <select class="input-field" id="nombreMetodologias" bind:value={$form.nombreMetodologias} on:change={handleChange}>
+                        <input list="nombreMetodologiasOptions" id="nombreMetodologias" bind:value={$form.nombreMetodologias} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un nombre" required />
+                        <datalist id="nombreMetodologiasOptions">
                             <option value="">Seleccione un nombre</option>
                             <option value="Miller">Miller</option>
                                 <option value="Jorge">Jorge</option>
                                 <option value="Chrystian">Chrystian</option>
-                        </select>
+                        </datalist>
                         {#if $errors.nombreMetodologias}
                             <small class="mensajeError">{$errors.nombreMetodologias}</small>
                         {/if}
                     </div>
                     <div>
                         <label class="form-label" for="cargoMetodologias">Cargo</label>
-                        <select class="input-field" id="cargoMetodologias" bind:value={$form.cargoMetodologias} on:change={handleChange}>
+                        <input list="cargoMetodologiasOptions" id="cargoMetodologias" bind:value={$form.cargoMetodologias} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un cargo" required />
+                        <datalist id="cargoMetodologiasOptions">
                             <option value="">Seleccione un cargo</option>
                             <option value="Scrum master">Scrum master</option>
                             <option value="Especialista en agilidad">Especialista en agilidad</option>
                             <option value="Líder de proyecto">Líder de proyecto</option>
-                        </select>
+                        </datalist>
                         {#if $errors.cargoMetodologias}
                             <small class="mensajeError">{$errors.cargoMetodologias}</small>
                         {/if}
@@ -844,24 +866,26 @@
                 <div class="fields-container">
                     <div>
                         <label class="form-label" for="nombreCopy">Nombre</label>
-                        <select class="input-field" id="nombreCopy" bind:value={$form.nombreCopy} on:change={handleChange}>
+                        <input list="nombreCopyOptions" id="nombreCopy" bind:value={$form.nombreCopy} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un nombre"/>
+                        <datalist id="nombreCopyOptions">
                             <option value="">Seleccione un nombre</option>
                             <option value="Interés 1">Interés 1</option>
                             <option value="Interés 2">Interés 2</option>
                             <option value="Interés 3">Interés 3</option>
-                        </select>
+                        </datalist>
                         {#if $errors.nombreCopy}
                             <small class="mensajeError">{$errors.nombreCopy}</small>
                         {/if}
                     </div>
                     <div>
                         <label class="form-label" for="cargoCopy">Cargo</label>
-                        <select class="input-field" id="cargoCopy" bind:value={$form.cargoCopy} on:change={handleChange}>
+                        <input list="cargoCopyOptions" id="cargoCopy" bind:value={$form.cargoCopy} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un cargo"/>
+                        <datalist id="cargoCopyOptions">
                             <option value="">Seleccione un cargo</option>
                             <option value="Redactor tecnico">Redactor tecnico</option>
                             <option value="Especialista en copywriting">Especialista en copywriting</option>
                             <option value="Líder de proyecto">Líder de proyecto</option>
-                        </select>
+                        </datalist>
                         {#if $errors.cargoCopy}
                             <small class="mensajeError">{$errors.cargoCopy}</small>
                         {/if}
@@ -889,24 +913,26 @@
                 <div class="fields-container">
                     <div>
                         <label class="form-label" for=" nombreDisenoGrafico">Nombre</label>
-                        <select class="input-field" id=" nombreDisenoGrafico" bind:value={$form. nombreDisenoGrafico} on:change={handleChange}>
+                        <input list="nombreDisenoGraficoOptions" id="nombreDisenoGrafico" bind:value={$form.nombreDisenoGrafico} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un nombre"/>
+                        <datalist id="nombreDisenoGraficoOptions">
                             <option value="">Seleccione un nombre</option>
                             <option value="Interés 1">Interés 1</option>
                             <option value="Interés 2">Interés 2</option>
                             <option value="Interés 3">Interés 3</option>
-                        </select>
+                        </datalist>
                         {#if $errors. nombreDisenoGrafico}
                             <small class="mensajeError">{$errors. nombreDisenoGrafico}</small>
                         {/if}
                     </div>
                     <div>
                         <label class="form-label" for="cargoDisenoGrafico">Cargo</label>
-                        <select class="input-field" id="cargoDisenoGrafico" bind:value={$form.cargoDisenoGrafico} on:change={handleChange}>
+                        <input list="cargoDisenoGraficoOptions" id="cargoDisenoGrafico" bind:value={$form.cargoDisenoGrafico} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un cargo"/>
+                        <datalist id="cargoDisenoGraficoOptions">
                             <option value="">Seleccione un cargo</option>
                             <option value="Diseñador grafico">Diseñador grafico</option>
                             <option value="Diseñador visual">Diseñador visual</option>
                             <option value="Diseñador">Diseñador</option>
-                        </select>
+                        </datalist>
                         {#if $errors.cargoDisenoGrafico}
                             <small class="mensajeError">{$errors.cargoDisenoGrafico}</small>
                         {/if}
@@ -930,24 +956,26 @@
                 <div class="fields-container">
                     <div>
                         <label class="form-label" for="nombreEstrategia">Nombre</label>
-                        <select class="input-field" id="nombreEstrategia" bind:value={$form.nombreEstrategia} on:change={handleChange}>
+                        <input list="nombreEstrategiaOptions" id="nombreEstrategia" bind:value={$form.nombreEstrategia} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un nombre"/>
+                        <datalist id="nombreEstrategiaOptions">
                             <option value="">Seleccione un nombre</option>
                             <option value="Método 1">Método 1</option>
                             <option value="Método 2">Método 2</option>
                             <option value="Método 3">Método 3</option>
-                        </select>
+                        </datalist>
                         {#if $errors.nombreEstrategia}
                             <small class="mensajeError">{$errors.nombreEstrategia}</small>
                         {/if}
                     </div>
                     <div>
                         <label class="form-label" for="cargoEstrategia">Cargo</label>
-                        <select class="input-field" id="cargoEstrategia" bind:value={$form.cargoEstrategia} on:change={handleChange}>
+                        <input list="cargoEstrategiaOptions" id="cargoEstrategia" bind:value={$form.cargoEstrategia} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un cargo"/>
+                        <datalist id="cargoEstrategiaOptions">
                             <option value="">Seleccione un método</option>
                             <option value="Consultor">Consultor </option>
                             <option value="Negocios">Negocios </option>
                             <option value="administrador">administrador</option>
-                        </select>
+                        </datalist>
                         {#if $errors.cargoEstrategia}
                             <small class="mensajeError">{$errors.cargoEstrategia}</small>
                         {/if}
@@ -975,24 +1003,26 @@
                 <div class="fields-container">
                     <div>
                         <label class="form-label" for="nombreFormacion">Nombre</label>
-                        <select class="input-field" id="nombreFormacion" bind:value={$form.nombreFormacion} on:change={handleChange}>
+                        <input list="nombreFormacionOptions" id="nombreFormacion" bind:value={$form.nombreFormacion} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un nombre"/>
+                        <datalist id="nombreFormacionOptions">
                             <option value="">Seleccione un nombre</option>
                             <option value="Estrategia 1">Estrategia 1</option>
                             <option value="Estrategia 2">Estrategia 2</option>
                             <option value="Estrategia 3">Estrategia 3</option>
-                        </select>
+                        </datalist>
                         {#if $errors.nombreFormacion}
                             <small class="mensajeError">{$errors.nombreFormacion}</small>
                         {/if}
                     </div>
                     <div>
                         <label class="form-label" for="cargoFormacion">Cargo</label>
-                        <select class="input-field" id="cargoFormacion" bind:value={$form.cargoFormacion} on:change={handleChange}>
+                        <input list="cargoFormacionOptions" id="cargoFormacion" bind:value={$form.cargoFormacion} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un cargo"/>
+                        <datalist id="cargoFormacionOptions">
                             <option value="">Seleccione un cargo</option>
                             <option value="Estratega">Estratega</option>
                             <option value="Instructor Formacion">Instructor Formacion </option>
                             <option value="Formador">Formador</option>
-                        </select>
+                        </datalist>
                         {#if $errors.cargoFormacion}
                             <small class="mensajeError">{$errors.cargoFormacion}</small>
                         {/if}
@@ -1017,24 +1047,26 @@
                 <div class="fields-container">
                     <div>
                         <label class="form-label" for="nombreAudiovisual">Nombre</label>
-                        <select class="input-field" id="nombreAudiovisual" bind:value={$form.nombreAudiovisual} on:change={handleChange}>
+                        <input list="nombreAudiovisualOptions" id="nombreAudiovisual" bind:value={$form.nombreAudiovisual} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un nombre"/>
+                        <datalist id="nombreAudiovisualOptions">
                             <option value="">Seleccione un nombre</option>
                             <option value="Formación 1">Formación 1</option>
                             <option value="Formación 2">Formación 2</option>
                             <option value="Formación 3">Formación 3</option>
-                        </select>
+                        </datalist>
                         {#if $errors.nombreAudiovisual}
                             <small class="mensajeError">{$errors.nombreAudiovisual}</small>
                         {/if}
                     </div>
                     <div>
                         <label class="form-label" for="cargoAudiovisual">Cargo</label>
-                        <select class="input-field" id="cargoAudiovisual" bind:value={$form.cargoAudiovisual} on:change={handleChange}>
+                        <input list="cargoAudiovisualOptions" id="cargoAudiovisual" bind:value={$form.cargoAudiovisual} on:input={handleChange} class="input-field" placeholder="Seleccione o escriba un cargo"/>
+                        <datalist id="cargoAudiovisualOptions">
                             <option value="">Seleccione un cargo</option>
                             <option value="Productor audiovisual">Productor audiovisual</option>
                             <option value="Especialista en multimedia">Especialista en multimedia</option>
                             <option value="Coordinador">Coordinador</option>
-                        </select>
+                        </datalist>
                         {#if $errors.cargoAudiovisual}
                             <small class="mensajeError">{$errors.cargoAudiovisual}</small>
                         {/if}
