@@ -1,6 +1,13 @@
-
 <script>
     //BackLog de Alto Nivel
+    let opcionesTalla = [
+        { sigla: "XS", nombre: "Extra-Small" },
+        { sigla: "S", nombre: "Small" },
+        { sigla: "M", nombre: "Medium" },
+        { sigla: "L", nombre: "Large" },
+        { sigla: "XL", nombre: "Extra-Large" }
+    ];
+
     let filas = [
         { talla: "XS", sigla: "Extra-Small", puntosMin: 1, puntosMax: 2 },
         { talla: "S", sigla: "Small", puntosMin: 3, puntosMax: 5 },
@@ -9,9 +16,7 @@
         { talla: "XL", sigla: "Extra-Large", puntosMin: 55, puntosMax: 89 }
     ];
 
-  
     function agregarFila() {
-       
         filas = [...filas, { talla: "", sigla: "", puntosMin: 0, puntosMax: 0 }];
     }
 
@@ -36,6 +41,7 @@
 
 
 <style>
+
 
 .main-container {
     background-color: #E0E0E0;
@@ -74,22 +80,22 @@ form {
     align-items: center;
 }
 
-.form-group{
+.form-group {
     align-items: center;
     text-align: center;
 }
 
-.tabla-pro{
+.tabla-pro {
     width: 60%;
     margin-left: 18%;
 }
-.tabla-nivel{
+
+.tabla-nivel {
     width: 80%;
     margin-left: 9%;
-    
 }
 
-input[type="text"], input[type="number"], input[type="date"], textarea {
+input[type="text"], input[type="number"], input[type="date"], textarea, select {
     border: none;
     outline: none;
     background: none;
@@ -103,9 +109,18 @@ input[type="text"], input[type="number"], input[type="date"], textarea {
     font-family: "Nunito Sans", sans-serif;
 }
 
-input[type="text"]:hover, input[type="number"]:hover, input[type="date"]:hover, textarea:hover {
+input[type="text"]:hover, input[type="number"]:hover, input[type="date"]:hover, textarea:hover, select:hover {
     border: 2px solid #5C8BFF;
     cursor: pointer;
+}
+
+select {
+    appearance: none; 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><polygon points="0,0 10,0 5,7" fill="black"/></svg>') no-repeat right 10px center; /* Agrega una flecha personalizada */
+    background-color: #f2f8ff; 
+    padding-right: 30px; 
 }
 
 button {
@@ -130,22 +145,12 @@ button:hover {
     transition: all .3s;
 }
 
-.mensajeError {
-    color: rgb(255, 47, 47);
-    font-size: smaller;
-    font-weight: bold;
-    font-family: 'Arial', sans-serif;
-    text-align: left;
-    margin-top: 5px;
-}
-
+/* Footer */
 footer {
     background-color: black;
     color: rgb(240, 239, 239);
     padding: 20px;
     text-align: center;
-   
-    
 }
 
 .footer-logo {
@@ -185,16 +190,13 @@ footer {
 .footer-copyright {
     font-size: 12px;
 }
-
-
-
 </style>
+
+
 
 
 <div class="main-container">
     <div class="right">
-
-       
         <h2 class="title-section">BackLog de Alto Nivel</h2>
         <form>
             <div class="form-group">
@@ -210,21 +212,36 @@ footer {
                     <tbody>
                         {#each filas as fila, i}
                         <tr>
-                            <td><input type="text" bind:value={fila.talla} placeholder="Talla" /></td>
-                            <td><input type="text" bind:value={fila.sigla} placeholder="Sigla" /></td>
+                            
+                            <td>
+                                <select bind:value={fila.talla}>
+                                    <option value="" disabled selected>Selecciona una talla</option>
+                                    {#each opcionesTalla as opcion}
+                                        <option value={opcion.sigla}>{opcion.nombre}</option>
+                                    {/each}
+                                </select>
+                            </td>
+                            
+                            <td>
+                                <select bind:value={fila.sigla}>
+                                    <option value="" disabled selected>Selecciona una sigla</option>
+                                    {#each opcionesTalla as opcion}
+                                        <option value={opcion.nombre}>{opcion.sigla}</option>
+                                    {/each}
+                                </select>
+                            </td>
                             <td><input type="number" bind:value={fila.puntosMin} placeholder="Puntos Mínimos" /></td>
                             <td><input type="number" bind:value={fila.puntosMax} placeholder="Puntos Máximos" /></td>
                         </tr>
                         {/each}
                     </tbody>
                 </table>
-                <button type="button" on:click={agregarFila}> Agregar fila</button>
+                <button type="button" on:click={agregarFila}>Agregar fila</button>
             </div>
         </form>
 
         <hr style="margin: 40px 0;" />
 
-        
         <h2 class="title-section">Promedios</h2>
         <form>
             <div class="form-group">
@@ -253,7 +270,6 @@ footer {
         </form>
     </div>
 </div>
-
 
 
 
