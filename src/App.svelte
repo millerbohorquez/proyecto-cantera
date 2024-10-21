@@ -14,7 +14,7 @@
 <header>
   <div class="header-container">
     <div class="header-logo">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQS61dDyABV1Kvs4dK0JE9YUCrrhBJ2JHOlMw&s" alt="LINKTIC Logo" 
+      <img src="https://linktic.com/media/2024/03/logo-footer.svg" alt="LINKTIC Logo" 
       on:click={() => goToPage('home')} style="cursor: pointer;" />
     </div>
     <div class="header-links">
