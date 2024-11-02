@@ -61,7 +61,7 @@
             let errs = {};
 
             const requiredFields = [
-                'nombreRQ', 'cargoRQ', 
+                'nombreRQ',
                 'nombreDiseno', 'cargoDiseno', 
                 'nombreArquitectura', 'cargoArquitectura', 
                 'nombreDesarrollo', 'cargoDesarrollo', 

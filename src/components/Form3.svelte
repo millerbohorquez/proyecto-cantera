@@ -1,159 +1,134 @@
 <script>
-    let accordions = {
-        ean: false
-    }
+   let accordions = { ean: false };
+  
+  function toggleAccordion(section) {
+      accordions[section] = !accordions[section];
+  }
 
-    function toggleAccordion(section) {
-        accordions[section] = !accordions[section];
-    }
-    // Datos iniciales del formulario de BackLog de Alto Nivel
-    let filasBacklog = [
-        { id: 1, nombreAudiovisual: "", talla: "" },
-        { id: 2, nombreAudiovisual: "", talla: "" }
-    ];
+  let filasBacklog = [
+      { id: 1, nombreAudiovisual: "", talla: "" },
+      { id: 2, nombreAudiovisual: "", talla: "" }
+  ];
 
-    // Opciones de Audiovisuales y Tallas
-    let opcionesTalla = ["Extra-Small", "Small", "Medium", "Large", "Extra-Large"];
-    let opcionesAudiovisual = ["1", "2", "3"];
+  let opcionesTalla = ["XS", "S", "M", "L", "XL"];
+  let opcionesAudiovisual = ["1", "2", "3"];
 
-    // Datos para el formulario de promedios
-    let promedios = {
-        XS: { conteo: 0, peso: 0 },
-        S: { conteo: 0, peso: 0 },
-        M: { conteo: 0, peso: 0 },
-        L: { conteo: 0, peso: 0 },
-        XL: { conteo: 0, peso: 0 }
-    };
+  let promedios = {
+      XS: { conteo: 0, peso: 0 },
+      S: { conteo: 0, peso: 0 },
+      M: { conteo: 0, peso: 0 },
+      L: { conteo: 0, peso: 0 },
+      XL: { conteo: 0, peso: 0 }
+  };
 
-    // Datos de dificultad del proyecto
-    let dificultadProyecto = {
-        talla: "",
-        descripcion: "",
-        escenarioOptimista: 0,
-        escenarioRealista: 0,
-        escenarioNegativo: 0,
-        diasProyecto: 0,
-        semanasProyecto: 0,
-        mesesProyecto: 0
-    };
-
-    // Tabla estática de Estimación de Alto Nivel
+  let dificultadProyecto = {
+      talla: "",
+      descripcion: "",
+      escenarioOptimista: 0,
+      escenarioRealista: 0,
+      escenarioNegativo: 0,
+      horasRecomendadas: 0,
+      diasProyecto: 0,
+      semanasProyecto: 0,
+      mesesProyecto: 0
+  };
+  
     let estimacionAltoNivel = [
-        { talla: "Extra-Small", sigla: "XS", puntosMin: 1, puntosMax: 2, pesoPorTalla: 1 },
-        { talla: "Small", sigla: "S", puntosMin: 3, puntosMax: 5, pesoPorTalla: 2 },
-        { talla: "Medium", sigla: "M", puntosMin: 8, puntosMax: 13, pesoPorTalla: 3 },
-        { talla: "Large", sigla: "L", puntosMin: 21, puntosMax: 34, pesoPorTalla: 4 },
-        { talla: "Extra-Large", sigla: "XL", puntosMin: 55, puntosMax: 89, pesoPorTalla: 5 }
-    ];
+    { talla: "XS", sigla: "XS", puntosMin: 1, puntosMax: 2, pesoPorTalla: 1, descripcion: "Tareas muy pequeñas y simples, requieren poco esfuerzo o tiempo; completadas en horas." },
+    { talla: "S", sigla: "S", puntosMin: 3, puntosMax: 5, pesoPorTalla: 2, descripcion: "Tareas pequeñas, requieren algo de análisis o desarrollo; típicamente entre uno o dos días." },
+    { talla: "M", sigla: "M", puntosMin: 8, puntosMax: 13, pesoPorTalla: 3, descripcion: "Esfuerzo moderado, de complejidad media; puede tomar de algunos días a una semana." },
+    { talla: "L", sigla: "L", puntosMin: 21, puntosMax: 34, pesoPorTalla: 4, descripcion: "Tareas grandes o complejas que requieren significativo esfuerzo; típicamente de una a dos semanas." },
+    { talla: "XL", sigla: "XL", puntosMin: 55, puntosMax: 89, pesoPorTalla: 5, descripcion: "Tareas muy grandes y complejas, requieren planificación extensa; suelen tomar varias semanas." }
+];
 
-    // Función para agregar una fila al BackLog
-    function agregarFilaBacklog() {
+
+function agregarFilaBacklog() {
         filasBacklog = [...filasBacklog, { id: filasBacklog.length + 1, nombreAudiovisual: "", talla: "" }];
     }
-
-    // Función para eliminar una fila
+  
     function eliminarFilaBacklog(id) {
         filasBacklog = filasBacklog.filter(fila => fila.id !== id);
     }
-
-    // Función para manejar el cambio en las tallas y calcular conteo y peso
+  
     function actualizarPromedios() {
-        // Resetear promedios
         Object.keys(promedios).forEach(talla => {
             promedios[talla].conteo = 0;
             promedios[talla].peso = 0;
         });
 
-   // Calcular conteo y peso basado en las filas del backlog
-filasBacklog.forEach(fila => {
-    if (fila.talla) {
-        // Asegurarse de que existe el objeto para la talla antes de acceder a 'conteo' y 'peso'
-        if (!promedios[fila.talla]) {
-            // Inicializar si no existe
-            promedios[fila.talla] = {
-                conteo: 0,
-                peso: 0
-            };
-        }
-
-        // Incrementar conteo y peso
-        promedios[fila.talla].conteo += 1;
-        const pesoPorTalla = estimacionAltoNivel.find(item => item.sigla === fila.talla)?.pesoPorTalla || 0;
-        promedios[fila.talla].peso += pesoPorTalla;
+        filasBacklog.forEach(fila => {
+            if (fila.talla && promedios[fila.talla]) {
+                promedios[fila.talla].conteo += 1;
+                const pesoPorTalla = estimacionAltoNivel.find(item => item.sigla === fila.talla)?.pesoPorTalla || 0;
+                promedios[fila.talla].peso += pesoPorTalla;
+            }
+        });
     }
-});
-
-    }
-
-    // Función para calcular dificultad del proyecto
+  
     function calcularDificultad() {
-        let totalConteo = Object.values(promedios).reduce((sum, talla) => sum + talla.conteo, 0);
-        let totalPeso = Object.values(promedios).reduce((sum, talla) => sum + talla.peso, 0);
-        
-        // Asignar valores por defecto
-        dificultadProyecto.talla = "0"; // Por defecto
-        dificultadProyecto.descripcion = "0"; // Por defecto
-        dificultadProyecto.escenarioOptimista = 0;
-        dificultadProyecto.escenarioRealista = 0;
-        dificultadProyecto.escenarioNegativo = 0;
-        dificultadProyecto.diasProyecto = 0;
-        dificultadProyecto.semanasProyecto = 0;
-        dificultadProyecto.mesesProyecto = 0;
+    actualizarPromedios();
+    let totalConteo = Object.values(promedios).reduce((sum, talla) => sum + talla.conteo, 0);
+    let totalPeso = Object.values(promedios).reduce((sum, talla) => sum + talla.peso, 0);
 
-        // Solo calcular si hay tallas válidas
-        if (totalConteo > 0) {
-            let horasRecomendadas = 35; // Escenario optimista
-            let horasLaboralesAltoNivel = 8; // Constante que no ve el cliente
+    dificultadProyecto = {
+        talla: "",
+        descripcion: "",
+        escenarioOptimista: 0,
+        escenarioRealista: 0,
+        escenarioNegativo: 0,
+        horasRecomendadas: 0,
+        diasProyecto: 0,
+        semanasProyecto: 0,
+        mesesProyecto: 0
+    };
 
-            dificultadProyecto.diasProyecto = horasRecomendadas / horasLaboralesAltoNivel;
-            dificultadProyecto.semanasProyecto = dificultadProyecto.diasProyecto / 5;
-            dificultadProyecto.mesesProyecto = dificultadProyecto.semanasProyecto / 4;
+    
+    let pesoPromedio = Math.round(totalPeso / 5);
 
-            // Suponiendo que se quiere determinar la dificultad en base a la talla más alta
-            dificultadProyecto.talla = "L"; // Cambiar esta lógica según tu necesidad
-            dificultadProyecto.descripcion = "Descripción de la talla L y su dificultad"; // Descripción predeterminada
-            dificultadProyecto.escenarioOptimista = 28; // Valores de ejemplo
-            dificultadProyecto.escenarioRealista = 35.00;
-            dificultadProyecto.escenarioNegativo = 43.75;
-        }
+    let tallaEncontrada = estimacionAltoNivel.find(item => item.pesoPorTalla === pesoPromedio);
+
+    if (tallaEncontrada) {
+        dificultadProyecto.talla = tallaEncontrada.sigla;
+        dificultadProyecto.descripcion = tallaEncontrada.descripcion;
+        dificultadProyecto.escenarioOptimista = tallaEncontrada.puntosMin * 0.8;
+        dificultadProyecto.escenarioRealista = (tallaEncontrada.puntosMin + tallaEncontrada.puntosMax) / 2;
+        dificultadProyecto.escenarioNegativo = tallaEncontrada.puntosMax * 1.25;
+        dificultadProyecto.horasRecomendadas = dificultadProyecto.escenarioRealista;
+
+        let horasLaboralesAltoNivel = 8;
+        dificultadProyecto.diasProyecto = dificultadProyecto.horasRecomendadas / horasLaboralesAltoNivel;
+        dificultadProyecto.semanasProyecto = dificultadProyecto.diasProyecto / 5;
+        dificultadProyecto.mesesProyecto = dificultadProyecto.semanasProyecto / 4;
     }
-
-    // Función para manejar el envío de datos del formulario
-    function enviarDatos() {
-        actualizarPromedios();
-        calcularDificultad();
-        console.log("Datos enviados:", filasBacklog);
-        console.log("Promedios calculados:", promedios);
-        console.log("Dificultad del proyecto calculada:", dificultadProyecto);
-    }
+}
 </script>
 
 
 <style>
-       /* Nuevos estilos para la tabla de dificultad del proyecto */
        .dificultad-container {
         background-color: #f2f8ff;
         border-radius: 15px;
+        width: 86%;
+        max-width: 86%;
         padding: 15px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         margin-right: 20%;
-        margin-bottom: 25%;
-
+        margin-bottom: 10%;
+        margin-left: 10%;
     }
-    /* Modificación del ancho de las columnas */
+
     th:nth-child(2), td:nth-child(2) {
-        width: 60%; /* Ajusta este valor para que el campo "Nombre" sea más grande */
+        width: 60%;
     }
 
     th:nth-child(3), td:nth-child(3) {
-        width: 40%; /* Tamaño más pequeño para la columna "Talla" */
+        width: 40%;
     }
 
     th:nth-child(4), td:nth-child(4) {
-        width: 10%; /* Nueva columna para el botón de eliminar */
+        width: 10%;
     }
 
-    /* Estilos generales */
     .main-container {
         background-color: #E0E0E0;
         width: 100%;
@@ -169,7 +144,7 @@ filasBacklog.forEach(fila => {
     .container2 {
         justify-content: space-between;
         width: 100%;
-        display:flex;
+       display: grid;
         gap: 10%;
         background-color: #E0E0E0;
     }
@@ -183,52 +158,53 @@ filasBacklog.forEach(fila => {
         padding: 50px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         text-align: center;
-        margin-bottom: 40px;
+        
     }
+
     .bottom{
-        width: 100%;
-        height: 50%;
-        margin-left: 10%;
+        width: 50%;
+        height: auto;
+        margin-left: 28%;
         padding: 20px;
         border: 1px solid #ddd;
         border-radius: 20px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         background-color: #f2f8ff;
     }
-    
+
     .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .accordion-button {
-        padding: 0.25rem 0.5rem; 
-        font-size: 0.875rem; 
-        margin-left: 0.5rem; 
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .accordion-button {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+        margin-left: 0.5rem;
         border: none;
         border-radius: 10px;
-        background-color: transparent; 
-        cursor: pointer; 
-        transition: color 0.3s; 
+        background-color: transparent;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
 
-    }
     .accordion-button:hover {
-        color: blue; 
+        color: blue;
     }
-    .accordion-button{
-       resize: vertical;
-      
-    }
+
     .arrow {
-    width: 24px;
-    height: 24px;
-    transition: transform 0.3s ease;
-    color: #04132a;
-    margin-left: 100px;
-  }
-  .rotate {
-    transform: rotate(180deg);
-  }
+        width: 24px;
+        height: 24px;
+        transition: transform 0.3s ease;
+        color: #04132a;
+        margin-left: 100px;
+    }
+
+    .rotate {
+        transform: rotate(180deg);
+    }
+
     .title-section {
         font-style: normal;
         font-weight: bold;
@@ -248,90 +224,83 @@ filasBacklog.forEach(fila => {
         text-align: center;
         border: 1px solid #dddddd;
     }
-    
-       /* Modificación del tamaño del campo "Backlog de Alto Nivel" */
-       input.nombre, .talla {
+
+    input.nombre, .talla {
         width: 60%;
         padding: 8px;
-        font-size: 1rem; /* Ajusta el tamaño de fuente del campo */
+        font-size: 1rem;
         border-radius: 15px;
         border: 1px black solid;
     }
 
-
-
     button.add {
-    width: 50px;
-    height: 30px;
-    margin: 20px 10px;
-    font-weight: bold;
-    font-size: 14px;
-    cursor: pointer;
-    color: #efe6e6;
-    border: none;
-    background: #0049ff;
-    border-radius: 25px;
-}
-
-
-
-
-button.delete{
-    width: 50px;
-    height: 30px;
-    margin: 20px 10px;
-    font-weight: bold;
-    font-size: 14px;
-    cursor: pointer;
-    color: #e6dbdb;
-    border: none;
-    background: red;
-    border-radius: 25px;
-}
-button.delete:hover{
-    background-color: #d8270f;
-}
-
-button.send{
-    width: 50px;
-    height: 30px;
-    margin: 20px 10px;
-    font-weight: bold;
-    font-size: 14px;
-    cursor: pointer;
-    color: #f3ebeb;
-    border: none;
-    background: #29bb08;
-    border-radius: 25px;
-}
-
-button.send:hover{
-    background-color: #83ec6e;
-}
-
-input:hover {
-        border: 1px solid #5C8BFF;
-        cursor: pointer;
-    }
-
-    button {
-        width: 200px;
-        height: 45px;
+        width: 50px;
+        height: 30px;
         margin: 20px 10px;
         font-weight: bold;
-        font-size: 20px;
+        font-size: 14px;
         cursor: pointer;
-        color: #eadfdf;
+        color: #efe6e6;
         border: none;
         background: #0049ff;
         border-radius: 25px;
     }
 
+    button.add:hover{
+        background-color: #5C8BFF;
+    }
+
+    button.delete{
+        width: 50px;
+        height: 30px;
+        margin: 20px 10px;
+        font-weight: bold;
+        font-size: 14px;
+        cursor: pointer;
+        color: #e6dbdb;
+        border: none;
+        background: red;
+        border-radius: 25px;
+    }
+
+    button.delete:hover{
+        background-color: #d8270f;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: center; 
+        align-items: flex-end;   
+        height: 100%;           
+        margin-top: 20px;        
+        
+    }
+
+    button.send {
+        width: 100px;
+        height: 45px;  
+        margin: 0;    
+        font-weight: bold;
+        font-size: 14px;
+        cursor: pointer;
+        color: #f3ebeb;
+        border: none;
+        background: #37c218;
+        border-radius: 25px;
+    }
+
+    button.send:hover{
+        background-color: #52d339;
+    }
+
+    input:hover {
+        border: 1px solid #5C8BFF;
+        cursor: pointer;
+    }
 
 </style>
 
 <div class="main-container">
-    <!-- Tabla BackLog de Alto Nivel -->
     <div class="right">
         <h2 class="title-section">BackLog de Alto Nivel</h2>
 
@@ -339,20 +308,16 @@ input:hover {
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>BackLog</th>
+                    <th>Requerimiento</th>
                     <th>Talla</th>
-                    <th>Agregar</th> 
-                    <th>Enviar</th> 
-                    <th>Eliminar</th> 
-                    <!-- Nueva columna para las acciones -->
+                    <th>Agregar</th>
+                    <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody>
                 {#each filasBacklog as fila, index}
                 <tr>
                     <td>{fila.id}</td>
-
-                    <!-- Campo Nombre Audiovisual con datalist -->
                     <td>
                         <input class="nombre" list="nombreOptions" bind:value={fila.nombreAudiovisual} placeholder="Seleccione o escriba un nombre" />
                         <datalist id="nombreOptions">
@@ -362,10 +327,8 @@ input:hover {
                             {/each}
                         </datalist>
                     </td>
-
-                    <!-- Campo Talla con datalist -->
                     <td>
-                        <input class="talla" list="tallaOptions" bind:value={fila.talla} on:change={actualizarPromedios} placeholder="Seleccione o escriba una talla" />
+                        <input class="talla" list="tallaOptions" bind:value={fila.talla} placeholder="Seleccione o escriba una talla" />
                         <datalist id="tallaOptions">
                             <option value="">Seleccione una talla</option>
                             {#each opcionesTalla as opcion}
@@ -375,26 +338,14 @@ input:hover {
                     </td>
                     <td>
                         <button class="add" on:click={agregarFilaBacklog} title="Agregar fila">
-                            <!-- Ícono de agregar -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon-add" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <path d="M12 4v16m8 -8H4" />
-                            </svg>
-                           
-                        </button>
-                    </td>
-                    <td>
-                        <button class="send" on:click={enviarDatos} title="Enviar datos">
-                            <!-- Ícono de enviar -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-send" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M3 12h18l-9 9l-1 -4l-4 -1z" />
                             </svg>
                         </button>
                     </td>
                     <td>
                         <button class="delete" on:click={() => eliminarFilaBacklog(fila.id)} title="Eliminar">
-                            <!-- Ícono de basura -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon-delete" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <path d="M4 7h16" />
@@ -409,6 +360,14 @@ input:hover {
                 {/each}
             </tbody>
         </table>
+
+       
+        <div class="button-container">
+            <button class="send" on:click={enviarDatos} title="Enviar datos">
+                
+               <p>Enviar</p>
+            </button>
+        </div>
     </div>
 </div>
 
@@ -458,6 +417,7 @@ input:hover {
                         <th>Escenario Optimista</th>
                         <th>Escenario Realista</th>
                         <th>Escenario Negativo</th>
+                        <th>Horas Recomendadas</th>
                         <th>Días de Proyecto</th>
                         <th>Semanas de Proyecto</th>
                         <th>Meses de Proyecto</th>
@@ -466,18 +426,23 @@ input:hover {
                 <tbody>
                     <tr>
                         <td>{dificultadProyecto.talla}</td>
-                        <td>{dificultadProyecto.descripcion}</td>
-                        <td>{dificultadProyecto.escenarioOptimista}</td>
-                        <td>{dificultadProyecto.escenarioRealista}</td>
-                        <td>{dificultadProyecto.escenarioNegativo}</td>
-                        <td>{dificultadProyecto.diasProyecto.toFixed(2)}</td>
-                        <td>{dificultadProyecto.semanasProyecto.toFixed(2)}</td>
-                        <td>{dificultadProyecto.mesesProyecto.toFixed(5)}</td>
+                    <td>{dificultadProyecto.descripcion}</td>
+                    <td>{dificultadProyecto.escenarioOptimista.toFixed(2)}</td>
+                    <td>{dificultadProyecto.escenarioRealista.toFixed(2)}</td>
+                    <td>{dificultadProyecto.escenarioNegativo.toFixed(2)}</td>
+                    <td>{dificultadProyecto.horasRecomendadas.toFixed(2)}</td>
+                    <td>{dificultadProyecto.diasProyecto.toFixed(2)}</td>
+                    <td>{dificultadProyecto.semanasProyecto.toFixed(2)}</td>
+                    <td>{dificultadProyecto.mesesProyecto.toFixed(5)}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
+    
+
+
+
     
 
 
