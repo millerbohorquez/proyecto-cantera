@@ -1,9 +1,9 @@
 <script>
   import Header from '../components/Header.svelte';  
   import Footer from '../components/Footer.svelte';  
-  import Form1 from '../components/Form1.svelte';
-  import Form2 from '../components/Form2.svelte';
-  import Form3 from '../components/Form3.svelte';
+  import Solicitud from '../components/Solicitud.svelte';
+  import Generalidades from '../components/Generalidades.svelte';
+  import BackLog from '../components/BackLog.svelte';
   import Home from '../components/Home.svelte';
 
   let currentPage = 'home';
@@ -19,13 +19,30 @@
 <main>
   {#if currentPage === 'home'}
     <Home />
-  {:else if currentPage === 'form1'}
-    <Form1 {goToPage} />
-  {:else if currentPage === 'form2'}
-    <Form2 />
-  {:else if currentPage === 'form3'}
-    <Form3 {goToPage} />
+  {:else if currentPage === 'Solicitud'}
+    <Solicitud {goToPage} />
+  {:else if currentPage === 'Generalidades'}
+    <Generalidades />
+  {:else if currentPage === 'BackLog'}
+    <BackLog {goToPage} />
   {/if}
 </main>
 
 <Footer />
+
+
+
+
+
+<style>
+
+
+
+:global(body){
+
+  font-family: 'Arial', sans-serif; 
+  padding: 0;
+  margin: 0;
+}
+
+</style>

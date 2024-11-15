@@ -1,6 +1,7 @@
 
 <style>
 
+
     .intro {
     margin: 0 auto;
     max-width: 750px;
@@ -105,12 +106,7 @@
     <section class="tamano-proyecto">
         <h2>Tamaño del Proyecto</h2>
         <p>Una vez realizada la estimación de cada uno de los requerimientos y/o tareas, se obtendrá el tamaño del proyecto y su esfuerzo en horas a un alto nivel.</p>
-       
     </section>
 
     <br><br><br>
 </main>
-
-
-
-

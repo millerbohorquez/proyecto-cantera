@@ -1,5 +1,5 @@
 <script>
-  export let goToPage; 
+  export let goToPage;
 </script>
 
 
@@ -75,9 +75,10 @@
     </div>
     <div class="header-links">
       <button on:click={() => goToPage('home')} class="header-link">Quiénes somos</button>
-      <button on:click={() => goToPage('form1')} class="header-link">Formulario de Solicitud</button>
-      <button on:click={() => goToPage('form2')} class="header-link">Stakeholders</button>
-      <button on:click={() => goToPage('form3')} class="header-link">BackLog de Alto Nivel</button>
+      <button on:click={() => goToPage('Solicitud')} class="header-link">Formulario de Solicitud</button>
+      <button on:click={() => goToPage('Generalidades')} class="header-link">Stakeholders</button>
+      <button on:click={() => goToPage('BackLog')} class="header-link">BackLog de Alto Nivel</button>
     </div>
   </div>
 </header>
+
