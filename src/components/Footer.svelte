@@ -1,7 +1,7 @@
 <style>
 
   footer {
-          background-color: black;
+          background: linear-gradient(135deg, #192d3e, #0a131b, #000000, #22394d); 
           color: rgb(240, 239, 239);
           padding: 20px;
           text-align: center;

@@ -8,6 +8,7 @@
       background-color: #0049ff; 
       color: white; 
       padding: 15px 0; 
+      background: linear-gradient(135deg, #207cca, #3c6484, #207cca, #5f8cae); 
   }
   
   .header-container {
@@ -49,12 +50,14 @@
       cursor: pointer;
       border-radius: 5px;
       margin-left: 10px;
+      
+      
   }
   button:hover {
-      background-color: #003bb5;
-      box-shadow: 0px 0px 5px #5C8BFF,
-                  0px 0px 30px #5C8BFF,
-                  0px 0px 90px #5C8BFF;
+    background: linear-gradient(135deg, #207cca, #3c6484, #207cca, #5f8cae); 
+    box-shadow: 0px 0px 5px #5C8BFF,
+                0px 0px 30px #5C8BFF,
+                0px 0px 90px #5C8BFF;
   
       
   }
